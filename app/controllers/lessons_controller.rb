@@ -8,7 +8,7 @@ class LessonsController < ApplicationController
 
   def create
     @lesson = current_lesson.section.course(lesson_params)
-    if current_user.enrolled_in? = false
+    if current_user.enrolled_in? == false
       redirect_to course_path, alert: 'Invalid User'
     end
   end
