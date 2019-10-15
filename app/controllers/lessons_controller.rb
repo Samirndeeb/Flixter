@@ -8,12 +8,15 @@ class LessonsController < ApplicationController
 
   def create
     @lesson = current_lesson.section.course(lesson_params)
+  end
+
+  private
+
+  def require_authorized_for_current_lesson
     if current_user.enrolled_in? == false
       redirect_to course_path, alert: 'Invalid User'
     end
   end
-
-  private
 
   helper_method :current_lesson
   def current_lesson
